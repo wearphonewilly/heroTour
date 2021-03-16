@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeroService } from './services/hero.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+    title = 'Tour of Heroes';
+
+    constructor(private myService: HeroService) {}
+
+    async showUsers(): Promise<void> {
+        console.log(await this.myService.getUsers());
+    }
 }

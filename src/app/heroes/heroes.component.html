@@ -1,7 +1,24 @@
-<h3>{{hero.name | uppercase}} Details</h3>
-<div><span>id: </span>{{hero.id}}</div>
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- hero es igual al elemento que estas iterando en el momento -->
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+    <!-- Queremos iterar el array heroes y lo hacemos con el for de esta linea.  El heroes lo saca de heroes:Hero[] = HEROES; de la clase heroes.component.ts -->
+    <!-- El (click) lo usamos para que haga algo cuanod hacemos click. Le pasamos el hero que hemos clickado-->
+    <!-- Usaremos el 3r parametro para cambiar el css. Es un if de que si el hero es igual a selectedHero se le añadirá la clase selected  -->
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
 
-<div>
-  <label for="name">Hero name: </label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name">
-</div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail> <!-- El atributo dentro de hero-detail = [hero] y al otro lado del igual será "selectedHero". El selectedHero es el que tenemos en el heroes-->
+<!-- Lo añadimos aqui desde otro componente, el nombre es del selector en hero-detail.component.ts -->
+
+<!--<div *ngIf="selectedHero">
+    <!-- Queremos mirar si existe la variable selectedHero 
+
+    <h2>{{selectedHero.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+        <label for="hero-name">Hero name: </label>
+        <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
+    </div>
+</div> -->
