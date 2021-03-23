@@ -11,20 +11,20 @@ import { HeroService } from '../services/hero.service';
 export class HeroesComponent implements OnInit {
     
     heroes:Hero[] = []; //Le indicamos que es un array de heroes. Esto lo hacemos para que podamos usarlo en la vista
-    selectedHero?: Hero;
+    // selectedHero?: Hero;
 
-    constructor(private $hero: HeroService) {}  // Le colocamos el $ delante para indicar que es un servicio
+    constructor(private hero$: HeroService) {}  // Le colocamos el $ detrás para indicar que es un servicio
 
   ngOnInit(): void {
       this.getHeroes();
   }
 
-  onSelect(hero: Hero): void { //Esta función solo se llama desde el front por tanto no necesitará un return y será una función void
+  /* onSelect(hero: Hero): void { //Esta función solo se llama desde el front por tanto no necesitará un return y será una función void
     this.selectedHero = hero; //Pasaremos el hero al front que será el que se haya clickado
-  }
+  } */
 
   getHeroes(): void {
-    this.heroes = this.$hero.getHeroes();
+    this.heroes = this.hero$.getHeroes();
   }
 
 }

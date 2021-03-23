@@ -12,4 +12,9 @@ export class HeroService {
     getHeroes(): Hero[] {
         return HEROES;
     }
+
+    getHero(id:number): Hero {
+        return HEROES.find((el) => el.id === id);
+    }
+    // Buscamos un hero en el array a través de su ID
 }
